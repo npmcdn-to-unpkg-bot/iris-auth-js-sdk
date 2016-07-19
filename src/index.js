@@ -1,4 +1,5 @@
 import Fetch from 'isomorphic-fetch';
+import jws from 'jws';
 
 export class AuthManager {
   constructor(config) {
@@ -42,7 +43,27 @@ export class AuthManager {
     });
   }
 
-  get token() {
-    return this.config.token;
+  decodeToken(token) {
+    let decoded = jws.decode(token);
+    if (!decoded) {
+      return null;
+    }
+    let payload = decoded.payload;
+
+    //try parse the payload
+    if(typeof payload === 'string') {
+      try {
+        let obj = JSON.parse(payload);
+        if(typeof obj === 'object') {
+          payload = obj;
+        }
+      } catch (e) { }
+    }
+
+    return {
+      header: decoded.header,
+      payload: payload,
+      signature: decoded.signature
+    };
   }
 }
