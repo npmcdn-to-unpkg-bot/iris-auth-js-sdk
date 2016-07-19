@@ -7,7 +7,7 @@ export default {
   output: {
     path: join(__dirname, 'dist'),
     libraryTarget: 'umd',
-    library: 'starWarsNames',
+    library: 'irisAuth',
   },
   devtool: 'source-map',
   module: {
