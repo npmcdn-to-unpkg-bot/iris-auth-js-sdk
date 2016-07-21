@@ -1,6 +1,6 @@
 # Iris Auth JS SDK
 ## Introduction
-This section describes JavaScript SDK for Iris Auth Manager.  This SDK is isomorphic and can be used both from the browser or node.  Package can be installed with 
+This section describes JavaScript SDK for Iris Auth Manager.  This SDK is isomorphic and can be used both from the browser or node.  Package can be installed with
 
 ```
 npm i iris-auth-js-sdk
@@ -123,4 +123,30 @@ decodeToken(token)
 
 token – valid Iris JWT token
 ```
+# Example how to use it
+After you npm i iris-auth-js-sdk you can test it out with the following code:
 
+```
+let irisAuth = require("iris-auth-js-sdk")
+let authMgr = new irisAuth.AuthManager({"managementApiUrl": "<iris auth manager url>", "appKey": "<your app key>"})
+authMgr = anonymousLogin("Some Name", (data) => { console.log(data); }, (error) => { console.log(error); })
+```
+
+or from the browser you can use cdn: https://npmcdn.com/iris-auth-js-sdk@1.0.0/dist/iris.auth.min.js
+
+```
+let authMgr = new irisAuth.AuthManager({"managementApiUrl": "<iris auth manager url>", "appKey": "<your app key>"});
+    console.log("Auth Manager:");
+    authMgr.emailLogin("someemial@gmail.com", "password", (data) => {
+      console.log(data);
+      console.log(data.Token);
+      let decoded = authMgr.decodeToken(data.Token);
+      console.log(decoded);
+      authMgr.validateUserAccessToken(data.Token, (data) => {
+        console.log(data);
+      },
+      (error) => {
+        console.log(error);
+      });
+    }, (error) => { console.log(error); })
+```
