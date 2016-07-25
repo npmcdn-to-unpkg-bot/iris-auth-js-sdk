@@ -108,7 +108,7 @@ Returns Iris JWT access token.
 Logout API takes valid Iris JWT and adds it to blacklist so it cannot be used further to access Iris platform.
 
 ```
-Logout(token, successCallback, errorCallback)
+logout(token, successCallback, errorCallback)
 
 token – Iris JWT token
 successCallback – when API succeeds this callback will receive JSON response.
@@ -129,7 +129,7 @@ After you npm i iris-auth-js-sdk you can test it out with the following code:
 ```
 let irisAuth = require("iris-auth-js-sdk")
 let authMgr = new irisAuth.AuthManager({"managementApiUrl": "<iris auth manager url>", "appKey": "<your app key>"})
-authMgr = anonymousLogin("Some Name", (data) => { console.log(data); }, (error) => { console.log(error); })
+authMgr.anonymousLogin("Some Name", (data) => { console.log(data); }, (error) => { console.log(error); })
 ```
 
 or from the browser you can use cdn: https://npmcdn.com/iris-auth-js-sdk@1.0.0/dist/iris.auth.min.js
