@@ -9,7 +9,7 @@ npm i iris-auth-js-sdk
 or can be included from webpage from following cdn:
 
 ```
-https://npmcdn.com/iris-auth-js-sdk@1.0.0/dist/iris.auth.min.js
+https://npmcdn.com/iris-auth-js-sdk@1.0.2/dist/iris.auth.min.js
 ```
 
 ## Registration – Social Media
@@ -132,7 +132,7 @@ let authMgr = new irisAuth.AuthManager({"managementApiUrl": "<iris auth manager 
 authMgr.anonymousLogin("Some Name", (data) => { console.log(data); }, (error) => { console.log(error); })
 ```
 
-or from the browser you can use cdn: https://npmcdn.com/iris-auth-js-sdk@1.0.0/dist/iris.auth.min.js
+or from the browser you can use cdn: https://npmcdn.com/iris-auth-js-sdk@1.0.2/dist/iris.auth.min.js
 
 ```
 let authMgr = new irisAuth.AuthManager({"managementApiUrl": "<iris auth manager url>", "appKey": "<your app key>"});
