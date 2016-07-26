@@ -123,7 +123,7 @@ decodeToken(token)
 
 token – valid Iris JWT token
 ```
-# Example how to use it
+# Example
 After you npm i iris-auth-js-sdk you can test it out with the following code:
 
 ```
