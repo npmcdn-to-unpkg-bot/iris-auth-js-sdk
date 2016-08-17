@@ -1,6 +1,6 @@
 {
   "name": "iris-auth-js-sdk",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "JS SDK for Iris Auth Manager",
   "main": "dist/index.js",
   "scripts": {

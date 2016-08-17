@@ -22,12 +22,12 @@ export class AuthManager {
   }
 
   mediaRegister(type, mediaToken, successCallback, errorCallback) {
+    const requestHeader = new Headers();
+    requestHeader.append('Content-Type', 'application/json');
+    requestHeader.append('X-App-Key', this.config.appKey);
     return fetch(this.config.managementApiUrl + 'user/', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'X-App-Key': this.config.appKey,
-      },
+      headers: requestHeader,
       body: JSON.stringify({
         'Type': type,
         'MediaToken': mediaToken,
@@ -45,12 +45,12 @@ export class AuthManager {
   }
 
   emailRegister(username, email, password, successCallback, errorCallback) {
+    const requestHeader = new Headers();
+    requestHeader.append('Content-Type', 'application/json');
+    requestHeader.append('X-App-Key', this.config.appKey);
     return fetch(this.config.managementApiUrl + 'user/', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'X-App-Key': this.config.appKey,
-      },
+      headers: requestHeader,
       body: JSON.stringify({
         'Type': 'Email',
         'Email': email,
@@ -70,12 +70,12 @@ export class AuthManager {
   }
 
   userInformation(token, successCallback, errorCallback) {
+    const requestHeader = new Headers();
+    requestHeader.append('Content-Type', 'application/json');
+    requestHeader.append('Authorization', token);
     return fetch(this.config.managementApiUrl + 'user/current', {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': token,
-      },
+      headers: requestHeader,
     })
     .then(this._checkStatus)
     .then(this._parseJSON)
@@ -89,11 +89,11 @@ export class AuthManager {
   }
 
   validateUserAccessToken(token, successCallback, errorCallback) {
+    const requestHeader = new Headers();
+    requestHeader.append('Content-Type', 'application/json');
     return fetch(this.config.managementApiUrl + 'user/validate?access_token=' + token, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      headers: requestHeader,
     })
     .then(this._checkStatus)
     .then(this._parseJSON)
@@ -107,12 +107,12 @@ export class AuthManager {
   }
 
   socialLogin(type, mediaToken, successCallback, errorCallback) {
+    const requestHeader = new Headers();
+    requestHeader.append('Content-Type', 'application/json');
+    requestHeader.append('X-App-Key', this.config.appKey);
     return fetch(this.config.managementApiUrl + 'login/', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'X-App-Key': this.config.appKey,
-      },
+      headers: requestHeader,
       body: JSON.stringify({
         'Type': type,
         'MediaToken': mediaToken,
@@ -130,12 +130,12 @@ export class AuthManager {
   }
 
   emailLogin(email, password, successCallback, errorCallback) {
+    const requestHeader = new Headers();
+    requestHeader.append('Content-Type', 'application/json');
+    requestHeader.append('X-App-Key', this.config.appKey);
     return fetch(this.config.managementApiUrl + 'login/', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'X-App-Key': this.config.appKey,
-      },
+      headers: requestHeader,
       body: JSON.stringify({
         'Type': 'Email',
         'Email': email,
@@ -154,12 +154,12 @@ export class AuthManager {
   }
 
   anonymousLogin(userID, successCallback, errorCallback) {
+    const requestHeader = new Headers();
+    requestHeader.append('Content-Type', 'application/json');
+    requestHeader.append('X-App-Key', this.config.appKey);
     return fetch(this.config.managementApiUrl + 'login/anonymous/', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'X-App-Key': this.config.appKey,
-      },
+      headers: requestHeader,
       body: JSON.stringify({
         'UserID': userID,
       }),
@@ -176,12 +176,12 @@ export class AuthManager {
   }
 
   logout(token, successCallback, errorCallback) {
+    const requestHeader = new Headers();
+    requestHeader.append('Content-Type', 'application/json');
+    requestHeader.append('Authorization', token);
     return fetch(this.config.managementApiUrl + 'logout/', {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': token,
-      },
+      headers: requestHeader,
     })
     .then(this._checkStatus)
     .then(this._parseJSON)
